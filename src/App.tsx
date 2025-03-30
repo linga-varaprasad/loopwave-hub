@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import ThemeProvider from "./components/ThemeProvider";
 import Header from "./components/layout/Header";
+import Footer from "./components/layout/Footer";
 import Index from "./pages/Index";
 import VideoDetail from "./pages/VideoDetail";
 import Upload from "./pages/Upload";
@@ -43,12 +44,19 @@ window.logoutUser = () => {
   window.location.href = "/onboarding";
 };
 
-// Protected route component
+// Protected route component with consistent layout
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   if (!isLoggedIn()) {
     return <Navigate to="/onboarding" replace />;
   }
-  return <>{children}</>;
+  return (
+    <div className="flex flex-col min-h-screen">
+      <Header />
+      <main className="flex-1">
+        {children}
+      </main>
+    </div>
+  );
 };
 
 const App = () => (
@@ -69,12 +77,7 @@ const App = () => (
               path="/" 
               element={
                 <ProtectedRoute>
-                  <div className="flex flex-col min-h-screen">
-                    <Header />
-                    <main className="flex-1">
-                      <Index />
-                    </main>
-                  </div>
+                  <Index />
                 </ProtectedRoute>
               } 
             />
@@ -82,12 +85,7 @@ const App = () => (
               path="/video/:id" 
               element={
                 <ProtectedRoute>
-                  <div className="flex flex-col min-h-screen">
-                    <Header />
-                    <main className="flex-1">
-                      <VideoDetail />
-                    </main>
-                  </div>
+                  <VideoDetail />
                 </ProtectedRoute>
               } 
             />
@@ -95,12 +93,7 @@ const App = () => (
               path="/upload" 
               element={
                 <ProtectedRoute>
-                  <div className="flex flex-col min-h-screen">
-                    <Header />
-                    <main className="flex-1">
-                      <Upload />
-                    </main>
-                  </div>
+                  <Upload />
                 </ProtectedRoute>
               } 
             />
@@ -108,12 +101,7 @@ const App = () => (
               path="/profile" 
               element={
                 <ProtectedRoute>
-                  <div className="flex flex-col min-h-screen">
-                    <Header />
-                    <main className="flex-1">
-                      <Profile />
-                    </main>
-                  </div>
+                  <Profile />
                 </ProtectedRoute>
               } 
             />
@@ -121,12 +109,7 @@ const App = () => (
               path="/explore" 
               element={
                 <ProtectedRoute>
-                  <div className="flex flex-col min-h-screen">
-                    <Header />
-                    <main className="flex-1">
-                      <Explore />
-                    </main>
-                  </div>
+                  <Explore />
                 </ProtectedRoute>
               } 
             />

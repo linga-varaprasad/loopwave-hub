@@ -1,11 +1,11 @@
 
 import React, { useState, useEffect } from 'react';
 import { Search } from 'lucide-react';
-import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import VideoCard from '@/components/video/VideoCard';
 import { videos } from '@/data/mockData';
 import { cn } from '@/lib/utils';
+import PageHeader from '@/components/layout/PageHeader';
 
 const categories = [
   "All",
@@ -74,67 +74,70 @@ const Explore = () => {
   
   return (
     <div className="min-h-screen bg-white">
-      <Header />
-      
-      <main className="container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold mb-8">Explore</h1>
+      <main className="flex-grow">
+        <PageHeader 
+          title="Explore"
+          description="Discover popular content from around the world"
+        />
         
         {/* Search Bar */}
-        <div className="relative mb-8 max-w-lg mx-auto">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
-          <input
-            type="text"
-            placeholder="Search videos..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-3 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-loopvibes-teal/50"
-          />
-        </div>
-        
-        {/* Categories */}
-        <div className="flex flex-wrap gap-2 mb-8">
-          {categories.map((category) => (
-            <button
-              key={category}
-              className={cn(
-                "px-4 py-2 rounded-full transition-colors duration-200",
-                activeCategory === category
-                  ? "bg-loopvibes-teal text-white"
-                  : "bg-gray-100 text-gray-800 hover:bg-gray-200"
-              )}
-              onClick={() => setActiveCategory(category)}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
-        
-        {/* Videos Grid */}
-        {filteredVideos.length > 0 ? (
-          <div className="masonry-grid animate-fade-in">
-            {filteredVideos.map((video) => (
-              <VideoCard
-                key={video.id}
-                id={video.id}
-                videoSrc={video.videoSrc}
-                thumbnailSrc={video.thumbnailSrc}
-                title={video.title}
-                username={video.username}
-                userAvatar={video.userAvatar}
-                likes={video.likes}
-                comments={video.comments}
-                className="mb-4"
-              />
+        <div className="container mx-auto px-4">
+          <div className="relative mb-8 max-w-lg mx-auto">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+            <input
+              type="text"
+              placeholder="Search videos..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-10 pr-4 py-3 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-loopvibes-teal/50"
+            />
+          </div>
+          
+          {/* Categories */}
+          <div className="flex flex-wrap gap-2 mb-8">
+            {categories.map((category) => (
+              <button
+                key={category}
+                className={cn(
+                  "px-4 py-2 rounded-full transition-colors duration-200",
+                  activeCategory === category
+                    ? "bg-loopvibes-teal text-white"
+                    : "bg-gray-100 text-gray-800 hover:bg-gray-200"
+                )}
+                onClick={() => setActiveCategory(category)}
+              >
+                {category}
+              </button>
             ))}
           </div>
-        ) : (
-          <div className="py-16 text-center">
-            <h3 className="text-xl font-medium mb-2">No videos found</h3>
-            <p className="text-gray-500">
-              We couldn't find any videos matching your search criteria.
-            </p>
-          </div>
-        )}
+          
+          {/* Videos Grid */}
+          {filteredVideos.length > 0 ? (
+            <div className="masonry-grid animate-fade-in">
+              {filteredVideos.map((video) => (
+                <VideoCard
+                  key={video.id}
+                  id={video.id}
+                  videoSrc={video.videoSrc}
+                  thumbnailSrc={video.thumbnailSrc}
+                  title={video.title}
+                  username={video.username}
+                  userAvatar={video.userAvatar}
+                  likes={video.likes}
+                  comments={video.comments}
+                  className="mb-4"
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="py-16 text-center">
+              <h3 className="text-xl font-medium mb-2">No videos found</h3>
+              <p className="text-gray-500">
+                We couldn't find any videos matching your search criteria.
+              </p>
+            </div>
+          )}
+        </div>
       </main>
       
       <Footer />

@@ -16,6 +16,7 @@ const SignIn = () => {
     e.preventDefault();
     // In a real app, this would validate and authenticate the user
     toast.success("Successfully signed in!");
+    localStorage.setItem("isLoggedIn", "true");
     navigate("/");
   };
   
