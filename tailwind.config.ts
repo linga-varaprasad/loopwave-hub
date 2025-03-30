@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,14 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+                loopvibes: {
+                    teal: '#38B2AC',
+                    coral: '#F56565',
+                    purple: '#9F7AEA',
+                    light: '#F7FAFC',
+                    dark: '#1A202C',
+                }
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,11 +92,41 @@ export default {
 					to: {
 						height: '0'
 					}
-				}
+				},
+                'pulse-border': {
+                    '0%, 100%': { borderColor: 'rgba(56, 178, 172, 0.3)' },
+                    '50%': { borderColor: 'rgba(56, 178, 172, 0.8)' },
+                },
+                'scale-up': {
+                    '0%': { transform: 'scale(1)' },
+                    '100%': { transform: 'scale(1.05)' },
+                },
+                'fade-in': {
+                    '0%': { opacity: '0' },
+                    '100%': { opacity: '1' },
+                },
+                'slide-up': {
+                    '0%': { transform: 'translateY(10px)', opacity: '0' },
+                    '100%': { transform: 'translateY(0)', opacity: '1' },
+                },
+                'heart-beat': {
+                    '0%, 100%': { transform: 'scale(1)' },
+                    '50%': { transform: 'scale(1.15)' },
+                },
+                'rotate-icon': {
+                    '0%': { transform: 'rotate(0deg)' },
+                    '100%': { transform: 'rotate(360deg)' },
+                }
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+                'pulse-border': 'pulse-border 2s infinite',
+                'scale-up': 'scale-up 0.3s ease forwards',
+                'fade-in': 'fade-in 0.5s ease-out',
+                'slide-up': 'slide-up 0.4s ease-out',
+                'heart-beat': 'heart-beat 0.5s ease-in-out',
+                'rotate-icon': 'rotate-icon 0.5s ease-in-out',
 			}
 		}
 	},
