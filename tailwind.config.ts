@@ -63,13 +63,13 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-                loopvibes: {
-                    teal: '#38B2AC',
-                    coral: '#F56565',
-                    purple: '#9F7AEA',
-                    light: '#F7FAFC',
-                    dark: '#1A202C',
-                }
+				loopvibes: {
+					teal: '#38B2AC',
+					coral: '#F56565',
+					purple: '#9F7AEA',
+					light: '#F7FAFC',
+					dark: '#1A202C',
+				}
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -93,41 +93,50 @@ export default {
 						height: '0'
 					}
 				},
-                'pulse-border': {
-                    '0%, 100%': { borderColor: 'rgba(56, 178, 172, 0.3)' },
-                    '50%': { borderColor: 'rgba(56, 178, 172, 0.8)' },
-                },
-                'scale-up': {
-                    '0%': { transform: 'scale(1)' },
-                    '100%': { transform: 'scale(1.05)' },
-                },
-                'fade-in': {
-                    '0%': { opacity: '0' },
-                    '100%': { opacity: '1' },
-                },
-                'slide-up': {
-                    '0%': { transform: 'translateY(10px)', opacity: '0' },
-                    '100%': { transform: 'translateY(0)', opacity: '1' },
-                },
-                'heart-beat': {
-                    '0%, 100%': { transform: 'scale(1)' },
-                    '50%': { transform: 'scale(1.15)' },
-                },
-                'rotate-icon': {
-                    '0%': { transform: 'rotate(0deg)' },
-                    '100%': { transform: 'rotate(360deg)' },
-                }
+				'pulse-border': {
+					'0%, 100%': { borderColor: 'rgba(56, 178, 172, 0.3)' },
+					'50%': { borderColor: 'rgba(56, 178, 172, 0.8)' },
+				},
+				'scale-up': {
+					'0%': { transform: 'scale(1)' },
+					'100%': { transform: 'scale(1.05)' },
+				},
+				'fade-in': {
+					'0%': { opacity: '0' },
+					'100%': { opacity: '1' },
+				},
+				'slide-up': {
+					'0%': { transform: 'translateY(10px)', opacity: '0' },
+					'100%': { transform: 'translateY(0)', opacity: '1' },
+				},
+				'heart-beat': {
+					'0%, 100%': { transform: 'scale(1)' },
+					'50%': { transform: 'scale(1.15)' },
+				},
+				'rotate-icon': {
+					'0%': { transform: 'rotate(0deg)' },
+					'100%': { transform: 'rotate(360deg)' },
+				},
+				'float': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-10px)' },
+				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-                'pulse-border': 'pulse-border 2s infinite',
-                'scale-up': 'scale-up 0.3s ease forwards',
-                'fade-in': 'fade-in 0.5s ease-out',
-                'slide-up': 'slide-up 0.4s ease-out',
-                'heart-beat': 'heart-beat 0.5s ease-in-out',
-                'rotate-icon': 'rotate-icon 0.5s ease-in-out',
-			}
+				'pulse-border': 'pulse-border 2s infinite',
+				'scale-up': 'scale-up 0.3s ease forwards',
+				'fade-in': 'fade-in 0.5s ease-out',
+				'slide-up': 'slide-up 0.4s ease-out',
+				'heart-beat': 'heart-beat 0.5s ease-in-out',
+				'rotate-icon': 'rotate-icon 0.5s ease-in-out',
+				'float': 'float 3s ease-in-out infinite',
+			},
+			backdropFilter: {
+				'none': 'none',
+				'blur': 'blur(20px)',
+			},
 		}
 	},
 	plugins: [require("tailwindcss-animate")],
